@@ -1,5 +1,6 @@
+// Permitir traer path. Acceder dentro de la carpte no importa el lugar donde se encuentre
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -13,16 +14,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
-                exclude: /node_modules/,
+                // Estructura de Babel
+                test: /\.m?js$/, //Nos permite identificar los archivos según se encuentran en nuestro entorno.
+                exclude: /node_modules/, //Excluimos la carpeta de node modules
                 use: {
-                    loader: "babel-loader",
+                    loader: "babel-loader", //Utilizar un loader como configuración establecida.
                 },
             },
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin([
+        new HtmlWebPackPlugin([
             {
                 inject: true,
                 template: "./public/index.html",
@@ -31,8 +33,3 @@ module.exports = {
         ]),
     ],
 };
-
-// "scripts": {
-//     "build":"webpack --mode production",
-//     "start": "webpack-dev-server --open --mode development"
-//   },

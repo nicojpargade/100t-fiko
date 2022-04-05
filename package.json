@@ -1,10 +1,11 @@
 {
-  "name": "100tifiko",
+  "name": "100tífiko",
   "version": "1.0.0",
   "description": "single page application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
   },
   "keywords": [
     "javascript"
@@ -13,6 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.4",
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.71.0",
