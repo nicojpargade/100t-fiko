@@ -1,9 +1,10 @@
 // Permitir traer path. Acceder dentro de la carpte no importa el lugar donde se encuentre
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: ['@babel/polyfill', './src/index.js'],
+    entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "main.js",
@@ -24,12 +25,13 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebPackPlugin(
-            {
-                inject: true,
-                template: "./public/index.html",
-                filename: "./index.html",
-            },
-        ),
+        new HtmlWebPackPlugin({
+            inject: true,
+            template: "./public/index.html",
+            filename: "./index.html",
+        }),
+        new CopyPlugin({
+            patterns: [{ from: "./src/styles/styles.css", to: "" }],
+        }),
     ],
 };
